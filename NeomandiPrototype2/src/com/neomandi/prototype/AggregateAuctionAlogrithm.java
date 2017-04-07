@@ -156,28 +156,56 @@ public class AggregateAuctionAlogrithm {
 							}
 							else if(vmv1 < 0)
 							{
-								System.out.println(li.get(i).getAadharnumber()+" only "+maxvol+" is available "+Math.abs(vmv1)+" is pending.");
-								avg = avg + (maxvol * li.get(i).getBidprice());
-								maxavg = maxavg + maxvol;
-								int vol = maxvol;
-								maxvol = maxvol * 0;
-								a.add(li.get(i).getAadharnumber());
-								
-								pstmt.setInt(1, li.get(0).getBidprice());
-								System.out.println("Best bid: "+li.get(0).getBidprice());
-								if(li.get(0).getBidprice() != 0)
+								if(li.get(i).getRgBid() == 'n')
 								{
-									pstmt.setInt(2, vol);
+									System.out.println(li.get(i).getAadharnumber()+" only "+maxvol+" is available "+Math.abs(vmv1)+" is pending.");
+									avg = avg + (maxvol * li.get(i).getBidprice());
+									maxavg = maxavg + maxvol;
+									int vol = maxvol;
+									maxvol = maxvol * 0;
+									a.add(li.get(i).getAadharnumber());
+									
+									pstmt.setInt(1, li.get(0).getBidprice());
+									System.out.println("Best bid: "+li.get(0).getBidprice());
+									if(li.get(0).getBidprice() != 0)
+									{
+										pstmt.setInt(2, vol);
+									}
+									else
+									{
+										pstmt.setInt(2, 0);
+									}
+									System.out.println("Quantity assigned: "+vol);
+									pstmt.setLong(3, li.get(i).getAadharnumber());
+									System.out.println("Aadhar number: "+li.get(i).getAadharnumber());
+									pstmt.executeUpdate();
+									//System.out.println(pstmt);
 								}
-								else
+								else if(li.get(i).getRgBid() != 'n')
 								{
-									pstmt.setInt(2, 0);
+									System.out.println(li.get(i).getAadharnumber()+" only "+maxvol+" is available "+Math.abs(vmv1)+" is pending.");
+									avg = avg + (maxvol * li.get(i).getBidprice());
+									maxavg = maxavg + maxvol;
+									int vol = maxvol;
+									maxvol = maxvol * 0;
+									a.add(li.get(i).getAadharnumber());
+									
+									pstmt.setInt(1, li.get(0).getBidprice());
+									System.out.println("Best bid: "+li.get(0).getBidprice());
+									if(li.get(0).getBidprice() != 0)
+									{
+										pstmt.setInt(2, 0);
+									}
+									else
+									{
+										pstmt.setInt(2, 0);
+									}
+									System.out.println("Quantity assigned: "+vol);
+									pstmt.setLong(3, li.get(i).getAadharnumber());
+									System.out.println("Aadhar number: "+li.get(i).getAadharnumber());
+									pstmt.executeUpdate();
+									//System.out.println(pstmt);
 								}
-								System.out.println("Quantity assigned: "+vol);
-								pstmt.setLong(3, li.get(i).getAadharnumber());
-								System.out.println("Aadhar number: "+li.get(i).getAadharnumber());
-								pstmt.executeUpdate();
-								//System.out.println(pstmt);
 								
 								break;
 							}
