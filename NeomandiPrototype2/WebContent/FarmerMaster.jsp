@@ -14,7 +14,6 @@
 	 java.sql.SQLException,
 	 java.net.InetAddress,
 	 java.text.SimpleDateFormat,
-	 sun.misc.BASE64Encoder,
 	java.util.Date,java.sql.*"%>
 <!doctype html>
 <html>
