@@ -106,7 +106,7 @@ public class SchedulerServlet extends HttpServlet {
 		//System.out.println(s1t);
 		
 		SimpleScheduleBuilder.simpleSchedule();
-		Trigger t1 = TriggerBuilder.newTrigger().withIdentity("SimpleTrigger").withSchedule(SimpleScheduleBuilder.repeatSecondlyForever()).startAt(s1t).endAt(e1t).build();
+		Trigger t1 = TriggerBuilder.newTrigger().withIdentity("SimpleTrigger").withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(3)).startAt(s1t).endAt(e1t).build();
 		Scheduler sc = null;
 		try {
 			sc = StdSchedulerFactory.getDefaultScheduler();
